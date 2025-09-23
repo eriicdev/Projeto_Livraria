@@ -1,0 +1,24 @@
+[project]
+name = "livraria"
+version = "0.1.0"
+description = "Livraria API"
+authors = [
+    {name = "Erik costa",email = "ec5489976@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=5.2.6,<6.0.0)",
+    "djangorestframework (>=3.16.1,<4.0.0)"
+]
+
+[dependency-groups]
+dev = [
+    "pytest (>=8.4.2,<9.0.0)",
+    "factory-boy (>=3.3.3,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
