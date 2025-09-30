@@ -9,5 +9,5 @@ class CategorySerializer(serializers.ModelSerializer):
             'title',
             'slug',
             'description', 
-            'activate'
+            'active'
         ]
