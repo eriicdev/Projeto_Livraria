@@ -7,6 +7,3 @@ class Product(models.Model):
     price = models.PositiveIntegerField(null=True)
     active = models.BooleanField(default=True)
     categories = models.ManyToManyField(Category, blank=True)  # plural fica mais claro
-    
-    def __str__(self):
-        return self.name
