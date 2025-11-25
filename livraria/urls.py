@@ -1,8 +1,7 @@
-"""
-URL configuration for livraria project.
+"""bookstore URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -21,6 +20,6 @@ from django.urls import path, re_path, include
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
-    re_path('livraria/(?P<version>(v1|v2))/', include('order.urls')),
-    re_path('livraria/(?P<version>(v1|v2))/', include('product.urls'))
+    re_path('bookstore/(?P<version>(v1|v2))/', include('order.urls')),
+    re_path('bookstore/(?P<version>(v1|v2))/', include('product.urls'))
 ]

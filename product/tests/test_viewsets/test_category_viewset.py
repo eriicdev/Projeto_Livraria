@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import json
 
 from rest_framework.test import APITestCase, APIClient
@@ -8,13 +11,14 @@ from django.urls import reverse
 from product.factories import CategoryFactory
 from product.models import Category
 
+
 class CategoryViewSet(APITestCase):
-    clienter = APIClient()
+    client = APIClient()
 
     def setUp(self):
         self.category = CategoryFactory(title='books')
-        
-    def test_get_all_categories(self):
+
+    def test_get_all_category(self):
         response = self.client.get(
             reverse('category-list', kwargs={'version': 'v1'})
         )
@@ -40,3 +44,5 @@ class CategoryViewSet(APITestCase):
         created_category = Category.objects.get(title='technology')
 
         self.assertEqual(created_category.title, 'technology')
+
+
