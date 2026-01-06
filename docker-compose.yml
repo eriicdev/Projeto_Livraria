@@ -12,6 +12,8 @@ services:
       - ./env.dev
     depends_on:
       - db
+    networks:
+      - webnetwork
   nginx:
     image: nginx:alpine
     volumes:
@@ -21,6 +23,8 @@ services:
     depends_on:
       - web
       - db
+    networks:
+      - webnetwork
   db:
     image: postgres:15-alpine
     volumes:
@@ -29,6 +33,12 @@ services:
       - POSTGRES_USER=dev
       - POSTGRES_PASSWORD=dev
       - POSTGRES_DB=bookstore_db
+    networks:
+      - webnetwork
+
+networks:
+  webnetwork:
+    driver: bridge
 
 volumes:
   postgres_data:
