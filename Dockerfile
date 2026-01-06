@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 # Usa sua imagem customizada que já tem Python 3.13 + Poetry 2.1.3 + dependências básicas
 FROM costaandersom/python-poetry:3.13-slim
 

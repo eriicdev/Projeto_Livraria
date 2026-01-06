@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  web: 
+    build: .
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8000:8000
+    env_file:
+      - ./env.dev
+    depends_on:
+      - db
+    networks:
+      - webnetwork
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - web
+      - db
+    networks:
+      - webnetwork
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=bookstore_db
+    networks:
+      - webnetwork
+
+networks:
+  webnetwork:
+    driver: bridge
+
+volumes:
+  postgres_data:
