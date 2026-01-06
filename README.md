@@ -3,6 +3,7 @@
 Aplicação de uma loja fictícia desenvolvida com o objetivo de aprendizagem do framework `Django Rest Framework`.
 
 ---
+----
 
 ## ✅ Requisitos da Aplicação
 
@@ -133,53 +134,3 @@ bookstore-02/
 ├── manage.py
 └── pyproject.toml
 ```
-
----
-
-## ✍️ Autor
-
-Anderson Costa – [GitHub](https://github.com/AndersonCostaDev01)
-
-## 🐋 Projeto "Docker"
-
-para criar a `Imagem` do docker rode
-
-```bash
-docker build -t <nome-do-docker> .
-```
-
-agora para rodar 
-
-```bash
-docker run --name <nome-da-aplicação> --rm -d -p 8000:8000 <nome-do-docker>:<tag>
-``` 
-
-link para ver esta imagem docker
-
-DockerHub - [Imagens](https://hub.docker.com/r/costaandersom/bookstore/tags)
-
-Para executar lembre de ter o Docker em sua maquina [Docker - Dowload](https://www.docker.com/) 
-
-rode no terminal 
-```bash
-docker run --name bookstore --rm -d -p 8000:8000 costaandersom/bookstore:0.0.1
-``` 
-ele vai rodar internamente em sua maquina na porta `localhost:8000`
-
-## 🦑 Docker Compose
-
-Apos a imagem pronta para subir o docker compose use 
-
-```bash
-docker compose up --build
-```
-
-ele ira buildar a imagem e subir o container 
-
-apos subir tudo e nessesario rodas as migraçoes no db  então rode no terminal na pasta do `docker-compose.yml`
-
-```bash
-docker compose exec web poetry run python manage.py migrate
-```
-
-com isso sua aplicação deve esta de pe e rodando normalemente na porta `8000` de sua maquina 
