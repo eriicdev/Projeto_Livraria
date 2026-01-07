@@ -1,6 +1,16 @@
 version: '3.9'
 
 services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=bookstore_db
+    networks:
+      - webnetwork
   web: 
     build: .
     command: poetry run python manage.py runserver 0.0.0.0:8000
@@ -25,17 +35,6 @@ services:
       - db
     networks:
       - webnetwork
-  db:
-    image: postgres:15-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=dev
-      - POSTGRES_PASSWORD=dev
-      - POSTGRES_DB=bookstore_db
-    networks:
-      - webnetwork
-
 networks:
   webnetwork:
     driver: bridge
