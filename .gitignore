@@ -1,0 +1,51 @@
+# Python bytecode e cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pastas de cache e arquivos temporários
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.DS_Store
+
+# Ambiente virtual
+venv/
+env/
+ENV/
+
+# Django arquivos estáticos coletados
+staticfiles/
+media/
+
+# Arquivos de banco de dados SQLite
+db.sqlite3
+
+# Docker arquivos
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# Docker diretórios temporários
+docker/
+.docker/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Arquivos de teste, cobertura, caches
+.coverage
+*.cover
+.cache/
+nosetests.xml
+coverage.xml
+*.egg-info/
+dist/
+build/

@@ -4,4 +4,5 @@ from django.views import View
 
 class HomeView(View):
     def get(self, request):
-        return redirect("http://localhost:8080/")
+        return redirect("http://localhost:8000/bookstore/v1/product/")
+
