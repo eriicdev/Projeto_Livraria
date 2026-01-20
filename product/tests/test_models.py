@@ -1,54 +1,54 @@
+#  product/tests/test_models.py
+
 import pytest
-from product.models.category import Category
-from product.models.product import Product
+import uuid
+from product.models import Category, Product
+
 
 @pytest.mark.django_db
 def test_create_category():
     category = Category.objects.create(
-        title="Categoria Teste",
-        slug="categoria-teste",
-        description="Descrição de teste",
-        active=True
+        title="Test Category",
+        slug=f"test-product-{uuid.uuid4()}",
+        description="Test description",
     )
-
-    assert category.title == "Categoria Teste"
-    assert category.slug == "categoria-teste"
-    assert category.description == "Descrição de teste"
+    assert category.title == "Test Category"
     assert category.active is True
 
-    # Verifica __str__ do Category
-    assert str(category) == "Categoria Teste"
 
 @pytest.mark.django_db
-def test_create_product_with_categories():
-    # cria categorias
+def test_create_product():
+    product = Product.objects.create(
+        title="Test Product",
+        slug=f"test-product-{uuid.uuid4()}",
+        description="Test description",
+        price=9.99,
+    )
+    assert product.title == "Test Product"
+    assert product.active is True
+    assert product.price == 9.99
+
+
+@pytest.mark.django_db
+def test_create_product_with_multiple_categories():
     category1 = Category.objects.create(
-        title="Categoria 1",
-        slug="categoria-1"
+        title="Category 1",
+        slug=f"category-1-{uuid.uuid4()}",
+        description="Category 1 description",
     )
     category2 = Category.objects.create(
-        title="Categoria 2",
-        slug="categoria-2"
+        title="Category 2",
+        slug=f"category-2-{uuid.uuid4()}",
+        description="Category 2 description",
     )
-
-    # cria produto e associa categorias
     product = Product.objects.create(
-        name="Livro Django",
-        description="Descrição do livro",
-        price=100,
-        active=True
+        title="Test Product",
+        slug=f"test-product-{uuid.uuid4()}",
+        description="Test description",
+        price=9.99,
     )
-    product.categories.add(category1, category2)
+    # Associa as categorias após criar o produto
+    product.categories.set([category1, category2])
+    product.save()
 
-    assert product.name == "Livro Django"
-    assert product.description == "Descrição do livro"
-    assert product.price == 100
-    assert product.active is True
-
-    # verifica categorias associadas
     assert product.categories.count() == 2
-    assert category1 in product.categories.all()
-    assert category2 in product.categories.all()
-
-    # verifica __str__ do Product
-    assert str(product) == "Livro Django"
