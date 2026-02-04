@@ -137,13 +137,13 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-ALLOWED_HOSTS = ['eeriicthdev.pythonanywhere.com/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['eeriicthdev.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 DEBUG = os.getenv("DEBUG", "0") == "1"
 
 CORS_ALLOWED_ORIGINS = [
-    "https://eeriicthdev.pythonanywhere.com/",
+    "https://eeriicthdev.pythonanywhere.com",
 ]
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
